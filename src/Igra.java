@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -12,6 +14,8 @@ public class Igra extends JPanel{
 	
 	Zoga zoga = new Zoga(this);
 	Lopar lopar = new Lopar(this);
+	
+	private int tocke = 0;
 	
 	public Igra() {
 		addKeyListener(new KeyListener() {
@@ -57,6 +61,10 @@ public class Igra extends JPanel{
 		
 		zoga.narisi(g2d);
 		lopar.narisi(g2d);
+		
+		g2d.setColor(Color.RED);
+		g2d.setFont(new Font("Verdana" , Font.BOLD, 30));
+		g2d.drawString(String.valueOf(this.tocke),10, 30);
 	}
 	
 	public void konecIgre() {
@@ -64,8 +72,8 @@ public class Igra extends JPanel{
 		System.exit(0);
 	}
 	
-	private void premakni() {
-		zoga.premakni();
+	public void povecajTocke() {
+		this.tocke++;
 	}
 
 	public static void main(String[] args) {
